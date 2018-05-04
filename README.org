@@ -1,0 +1,4 @@
+#+TITLE: MY DOOM SETUP
+
+This is my [[https://github.com/hlissner/doom-emacs][doom-emacs]] setup.
+
