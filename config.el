@@ -1,5 +1,7 @@
 ;;;  -*- lexical-binding: t; -*-
 
+(load! +bindings)
+
 ;; git
 
 (def-package! magit-gitflow
