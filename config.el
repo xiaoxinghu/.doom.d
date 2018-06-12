@@ -14,7 +14,13 @@
         org-agenda-files (list org-directory
                                (concat org-directory "/notes")
                                (concat org-directory "/work")
-                               (concat org-directory "/projects"))))
+                               (concat org-directory "/projects")))
+
+  (map! :map evil-org-mode-map
+        :localleader
+        :n "l" #'x/org-insert-link-with-title)
+  )
+
 
 (after! js2-mode
   ;; javascript indent
