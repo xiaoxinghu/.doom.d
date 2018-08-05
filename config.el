@@ -25,17 +25,17 @@
 (setq org-capture-templates
       `(("t" "todo" entry
          (file+headline ,(concat org-directory "/inbox.org") "Tasks")
-         (file , "~/.doom.d/templates/todo.txt")
+         "* TODO %?\n:LOGBOOK:\n- Added: %U\n:END:"
          ::empty-lines-before 1
          ::empty-lines-after 1)
         ("n" "note" entry
          (file+headline ,(concat org-directory "/inbox.org") "Notes")
-         (file , "~/.doom.d/templates/note.txt")
+         "* %^{description}\n:LOGBOOK:\n- Added: %U\n:END:\n\n%?"
          ::empty-lines-before 1
          ::empty-lines-after 1)
         ("l" "link" entry
          (file+headline ,(concat org-directory "/inbox.org") "Notes")
-         (file , "~/.doom.d/templates/link.txt")
+         "* %?\n:LOGBOOK:\n- Added: %U\n:END:\n%^L"
          ::empty-lines-before 1
          ::empty-lines-after 1)
         ))
