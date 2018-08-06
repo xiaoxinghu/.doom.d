@@ -17,6 +17,11 @@
       org-ellipsis " ▼ "
       org-archive-mark-done nil)
 
+;;; refile
+(setq org-refile-targets
+      '((nil :maxlevel . 3)
+        (org-agenda-files :maxlevel . 3)))
+
 ;;; capture
 (setq org-capture-templates
       `(("t" "todo" entry
