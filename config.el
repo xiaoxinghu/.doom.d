@@ -9,17 +9,13 @@
 
 
 ;; org
-(let* ((root "~/io")
-       (inbox (concat root "/inbox.org"))
-       (gtd (concat root "/gtd.org")))
-  (setq
-   org-directory root
-   org-agenda-files (list inbox gtd)))
-
-;;; default settings
-(setq
-   org-log-into-drawer 1
-   org-archive-mark-done nil)
+(setq org-directory "~/io"
+      org-inbox (concat org-directory "/inbox.org")
+      org-gtd (concat org-directory "/gtd.org")
+      org-agenda-files (list org-inbox org-gtd)
+      org-log-into-drawer 1
+      org-ellipsis " ▼ "
+      org-archive-mark-done nil)
 
 ;;; capture
 (setq org-capture-templates
@@ -46,6 +42,30 @@
         :n "l" #'x/org-insert-link-with-title)
   )
 
+;;; agenda
+(setq org-agenda-custom-commands
+      '((" " "My Agenda"
+         ((agenda "" nil)
+          (tags-todo "-pause+TODO=\"NEXT\""
+                     ((org-agenda-overriding-header "NEXT")))
+          (tags-todo "-pause+@work"
+                     ((org-agenda-overriding-header "WORK")))
+          ))
+        ("r" "Review"
+         ((todo "TODO"
+                ((org-agenda-overriding-header "INBOX")
+                 (org-agenda-files (list org-inbox))))
+          (tags-todo "-pause+TODO=\"TODO\""
+                     ((org-agenda-overriding-header "TODOs")
+                      (org-agenda-files (list org-gtd))))
+          (tags-todo "pause"
+                     ((org-agenda-overriding-header "PAUSED")
+                      (org-agenda-files (list org-gtd))))
+          ))
+        ("Q" . "Custom Queries")
+        ("Qn" "Note Search" search ""
+         ((org-agenda-files (file-expand-wildcards (concat org-directory "/notes/*.org")))))
+        ))
 
 (after! js2-mode
   ;; javascript indent
