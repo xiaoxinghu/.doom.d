@@ -1,13 +1,28 @@
-;;;  -*- lexical-binding: t; -*-
+#+TITLE: My doom-emacs Config
+#+PROPERTY: header-args :tangle yes
 
-(load! "+bindings")
+* Key Bindings
 
-;; git
+#+BEGIN_SRC emacs-lisp
+(map! :leader
+      (:desc "file" :prefix "f"
+        :desc "Delete file" :n "D" #'doom/delete-this-file)
+      (:desc "open" :prefix "o"
+        :desc "Org agenda" :n "a" #'org-agenda)
+      )
+#+END_SRC
+
+* Git
+
+#+BEGIN_SRC emacs-lisp
 (def-package! magit-gitflow
   :init (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
   :after magit)
+#+END_SRC
 
+* org-mode
 
+#+BEGIN_SRC emacs-lisp
 ;; org
 (setq org-directory "~/io"
       org-inbox (concat org-directory "/inbox.org")
@@ -71,7 +86,11 @@
         ("Qn" "Note Search" search ""
          ((org-agenda-files (file-expand-wildcards (concat org-directory "/notes/*.org")))))
         ))
+#+END_SRC
 
+* coding
+
+#+BEGIN_SRC emacs-lisp
 (after! js2-mode
   ;; javascript indent
   (setq-default
@@ -85,5 +104,4 @@
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
   )
-
-(provide 'config)
+#+END_SRC
