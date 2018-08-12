@@ -11,19 +11,19 @@
         :desc "Org agenda" :n "a" #'org-agenda)
       )
 #+END_SRC
-
 * Git
 
+I personally use gitflow for most of my projects. So adding gitflow support to
+magit.
 #+BEGIN_SRC emacs-lisp
 (def-package! magit-gitflow
   :init (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
   :after magit)
 #+END_SRC
-
 * org-mode
 
+** Basic Variables
 #+BEGIN_SRC emacs-lisp
-;; org
 (setq org-directory "~/io"
       org-inbox (concat org-directory "/inbox.org")
       org-gtd (concat org-directory "/gtd.org")
@@ -31,13 +31,17 @@
       org-log-into-drawer 1
       org-ellipsis " ▼ "
       org-archive-mark-done nil)
+#+END_SRC
 
-;;; refile
+** Refile
+#+BEGIN_SRC emacs-lisp
 (setq org-refile-targets
       '((nil :maxlevel . 3)
         (org-agenda-files :maxlevel . 3)))
+#+END_SRC
 
-;;; capture
+** Capture
+#+BEGIN_SRC emacs-lisp
 (setq org-capture-templates
       `(("t" "todo" entry
          (file+headline ,(concat org-directory "/inbox.org") "Tasks")
@@ -55,14 +59,11 @@
          ::empty-lines-before 1
          ::empty-lines-after 1)
         ))
+#+END_SRC
 
-(after! org
-  (map! :map evil-org-mode-map
-        :localleader
-        :n "l" #'x/org-insert-link-with-title)
-  )
+** Agenda
 
-;;; agenda
+#+BEGIN_SRC emacs-lisp
 (setq org-agenda-custom-commands
       '((" " "My Agenda"
          ((agenda "" nil)
@@ -88,6 +89,15 @@
         ))
 #+END_SRC
 
+** Utilities
+
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (map! :map evil-org-mode-map
+        :localleader
+        :n "l" #'x/org-insert-link-with-title)
+  )
+#+END_SRC
 * coding
 
 #+BEGIN_SRC emacs-lisp
