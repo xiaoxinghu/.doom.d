@@ -25,9 +25,7 @@ magit.
 ** Basic Variables
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/io"
-      org-inbox (concat org-directory "/inbox.org")
-      org-gtd (concat org-directory "/gtd.org")
-      org-agenda-files (list org-inbox org-gtd)
+      org-agenda-files (concat org-directory "/.agenda-files")
       org-log-into-drawer 1
       org-ellipsis " ▼ "
       org-archive-mark-done nil)
@@ -73,22 +71,17 @@ magit.
                      ((org-agenda-overriding-header "WORK")))
           ))
         ("r" "Review"
-         ((todo "TODO"
-                ((org-agenda-overriding-header "INBOX")
-                 (org-agenda-files (list org-inbox))))
+         (
           (tags-todo "-pause+TODO=\"TODO\""
-                     ((org-agenda-overriding-header "TODOs")
-                      (org-agenda-files (list org-gtd))))
+                     ((org-agenda-overriding-header "TODOs")))
           (tags-todo "pause"
-                     ((org-agenda-overriding-header "PAUSED")
-                      (org-agenda-files (list org-gtd))))
+                     ((org-agenda-overriding-header "PAUSED")))
           ))
         ("Q" . "Custom Queries")
         ("Qn" "Note Search" search ""
          ((org-agenda-files (file-expand-wildcards (concat org-directory "/notes/*.org")))))
         ))
 #+END_SRC
-
 ** Utilities
 
 #+BEGIN_SRC emacs-lisp
