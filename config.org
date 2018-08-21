@@ -65,7 +65,8 @@ magit.
 #+BEGIN_SRC emacs-lisp
 (setq org-agenda-custom-commands
       '((" " "My Agenda"
-         ((agenda "" nil)
+         ((agenda "This Week" ((org-agenda-span 7) ;; days for the calander
+                               ))
           (tags-todo "-pause+TODO=\"NEXT\""
                      ((org-agenda-overriding-header "NEXT")))
           (tags-todo "-pause+@work"
@@ -73,7 +74,7 @@ magit.
           ))
         ("r" "Review"
          (
-          (tags-todo "-pause+TODO=\"TODO\""
+          (tags-todo "-pause+TODO=\"TODO\"-CATEGORY=\"routine\""
                      ((org-agenda-overriding-header "TODOs")))
           (tags-todo "pause"
                      ((org-agenda-overriding-header "PAUSED")))
