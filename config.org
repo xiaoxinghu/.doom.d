@@ -1,7 +1,7 @@
 #+TITLE: doom-emacs
 #+PROPERTY: header-args :tangle yes
 #+DESC: doom-emacs is my new love.
-#+ICON: https://cdn.huxiaoxing.com.s3.amazonaws.com/icons/emacs.png
+#+ICON: http://cdn.huxiaoxing.com/icons/emacs.png
 
 * Key Bindings
 
