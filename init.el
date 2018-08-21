@@ -58,7 +58,7 @@
       ;eshell            ; a consistent, cross-platform shell (WIP)
        hideshow          ; basic code-folding support
        imenu             ; an imenu sidebar and searchable code index
-      ;term              ; terminals in Emacs
+       term              ; terminals in Emacs
        vc                ; version-control and Emacs, sitting in a tree
 
        :tools
@@ -97,7 +97,7 @@
       ;julia             ; a better, faster MATLAB
       ;latex             ; writing papers in Emacs has never been so fun
        ledger            ; an accounting system in Emacs
-      ;lua               ; one-based indices? one-based indices
+       lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
       ;nim               ; python + lisp at the speed of c
       ;nix               ; I hereby declare "nix geht mehr!"

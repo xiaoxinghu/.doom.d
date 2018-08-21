@@ -1,5 +1,6 @@
 #+TITLE: My doom-emacs Config
 #+PROPERTY: header-args :tangle yes
+#+DESC: doom-emacs is my new love.
 
 * Key Bindings
 
