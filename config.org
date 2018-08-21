@@ -1,4 +1,4 @@
-#+TITLE: My doom-emacs Config
+#+TITLE: doom-emacs
 #+PROPERTY: header-args :tangle yes
 #+DESC: doom-emacs is my new love.
 
